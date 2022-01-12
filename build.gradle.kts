@@ -1,22 +1,32 @@
 plugins {
-  kotlin("multiplatform") version "1.6.0" apply true
-  id("io.kotest.multiplatform") version "5.0.0.6" apply true
+  kotlin("multiplatform") version "1.6.10" apply true
+  id("io.kotest.multiplatform") version "5.0.3" apply true
 }
 
 group "org.example"
 version "1.0"
 
 repositories {
+  maven(url = "https://oss.sonatype.org/content/repositories/snapshots/")
   mavenCentral()
+}
+
+buildscript {
+  repositories {
+    maven(url = "https://oss.sonatype.org/content/repositories/snapshots/")
+  }
+  dependencies {
+    classpath("io.arrow-kt.analysis.kotlin:io.arrow-kt.analysis.kotlin.gradle.plugin:2.0-SNAPSHOT")
+  }
 }
 
 kotlin {
   jvm()
 
-  js(IR) {
+  /* js(IR) {
     browser()
     nodejs()
-  }
+  } */
 
   linuxX64()
 
@@ -26,18 +36,16 @@ kotlin {
     commonMain {
       dependencies {
         implementation(kotlin("stdlib-common"))
-        implementation("io.arrow-kt:arrow-core:1.0.1")
-        implementation("io.arrow-kt:arrow-optics:1.0.1")
-        implementation("io.arrow-kt:arrow-fx-coroutines:1.0.1")
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
       }
     }
     commonTest {
       dependencies {
-        implementation("io.kotest:kotest-property:5.0.0")
-        implementation("io.kotest:kotest-framework-engine:5.0.0")
-        implementation("io.kotest:kotest-assertions-core:5.0.0")
+        implementation("io.kotest:kotest-property:5.0.3")
+        implementation("io.kotest:kotest-framework-engine:5.0.3")
+        implementation("io.kotest:kotest-assertions-core:5.0.3")
       }
     }
   }
 }
+
+apply(plugin = "io.arrow-kt.analysis.kotlin")

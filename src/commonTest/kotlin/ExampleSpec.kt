@@ -5,8 +5,4 @@ class ExampleSpec : StringSpec({
   "true shouldBe true" {
     true shouldBe true
   }
-
-  "exception should fail" {
-//    throw RuntimeException("Boom2!")
-  }
 })
