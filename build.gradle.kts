@@ -1,5 +1,5 @@
 plugins {
-  kotlin("multiplatform") version "1.6.10" apply true
+  kotlin("jvm") version "1.6.10" apply true
   id("io.kotest.multiplatform") version "5.0.3" apply true
 }
 
@@ -20,32 +20,12 @@ buildscript {
   }
 }
 
-kotlin {
-  jvm()
-
-  /* js(IR) {
-    browser()
-    nodejs()
-  } */
-
-  linuxX64()
-
-  mingwX64()
-
-  sourceSets {
-    commonMain {
-      dependencies {
-        implementation(kotlin("stdlib-common"))
-      }
-    }
-    commonTest {
-      dependencies {
-        implementation("io.kotest:kotest-property:5.0.3")
-        implementation("io.kotest:kotest-framework-engine:5.0.3")
-        implementation("io.kotest:kotest-assertions-core:5.0.3")
-      }
-    }
-  }
+dependencies {
+  implementation("org.jetbrains.kotlinx:kotlinx-html:0.7.3")
+  implementation(kotlin("stdlib-common"))
+  implementation("io.kotest:kotest-property:5.0.3")
+  implementation("io.kotest:kotest-framework-engine:5.0.3")
+  implementation("io.kotest:kotest-assertions-core:5.0.3")
 }
 
 apply(plugin = "io.arrow-kt.analysis.kotlin")
