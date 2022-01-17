@@ -1,11 +1,16 @@
-import kotlinx.html.HTMLTag
-import kotlinx.html.HtmlInlineTag
-import kotlinx.html.TagConsumer
-import kotlinx.html.Tag
-import kotlinx.html.Unsafe
 import java.text.MessageFormat
 import java.util.Locale
 import java.util.ResourceBundle
+import kotlinx.html.HTMLTag
+import kotlinx.html.HtmlInlineTag
+import kotlinx.html.Tag
+import kotlinx.html.TagConsumer
+import kotlinx.html.Unsafe
+import kotlinx.html.visit
+
+fun HTMLTag.localized(vararg arguments: String, block: LocalizedTag.() -> Unit = {}) {
+  LocalizedTag(arguments.toList(), consumer).visit(block)
+}
 
 class LocalizedTag(val arguments: List<String>, consumer: TagConsumer<*>) :
   HTMLTag(
@@ -27,7 +32,8 @@ private class LocalizedTagConsumer<T>(
     if (tag is LocalizedTag) {
       shouldLocalize = true
       arguments = tag.arguments
-    }
+      // } TODO without else this is broken
+    } else Unit
     downstream.onTagStart(tag)
   }
 
@@ -35,7 +41,8 @@ private class LocalizedTagConsumer<T>(
     if (tag is LocalizedTag) {
       shouldLocalize = false
       arguments = emptyList()
-    }
+      // } TODO without else this is broken
+    } else Unit
     downstream.onTagEnd(tag)
   }
 
