@@ -11,8 +11,11 @@ repositories {
 }
 
 buildscript {
+  repositories {
+    mavenCentral()
+  }
   dependencies {
-    classpath("io.arrow-kt.analysis.kotlin:io.arrow-kt.analysis.kotlin.gradle.plugin:2.0.2-alpha.18")
+    classpath("io.arrow-kt.analysis.kotlin:io.arrow-kt.analysis.kotlin.gradle.plugin:2.0.2-alpha.20")
   }
 }
 
