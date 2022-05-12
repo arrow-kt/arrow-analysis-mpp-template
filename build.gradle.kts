@@ -1,6 +1,7 @@
 plugins {
   kotlin("multiplatform") version "1.6.21" apply true
   id("io.kotest.multiplatform") version "5.3.0" apply true
+  id("io.arrow-kt.analysis.kotlin") version "2.0.2-alpha.20"
 }
 
 group "org.example"
@@ -13,9 +14,6 @@ repositories {
 buildscript {
   repositories {
     mavenCentral()
-  }
-  dependencies {
-    classpath("io.arrow-kt.analysis.kotlin:io.arrow-kt.analysis.kotlin.gradle.plugin:2.0.2-alpha.20")
   }
 }
 
@@ -46,5 +44,3 @@ kotlin {
     }
   }
 }
-
-apply(plugin = "io.arrow-kt.analysis.kotlin")
