@@ -1,6 +1,6 @@
 plugins {
-  kotlin("multiplatform") version "1.6.21" apply true
-  id("io.kotest.multiplatform") version "5.3.0" apply true
+  kotlin("multiplatform") version "1.9.25" apply true
+  id("io.kotest.multiplatform") version "5.9.1" apply true
   id("io.arrow-kt.analysis.kotlin") version "2.0.2"
 }
 
@@ -37,9 +37,9 @@ kotlin {
     }
     commonTest {
       dependencies {
-        implementation("io.kotest:kotest-property:5.3.0")
-        implementation("io.kotest:kotest-framework-engine:5.3.0")
-        implementation("io.kotest:kotest-assertions-core:5.3.0")
+        implementation("io.kotest:kotest-property:5.9.1")
+        implementation("io.kotest:kotest-framework-engine:5.9.1")
+        implementation("io.kotest:kotest-assertions-core:5.9.1")
       }
     }
   }
