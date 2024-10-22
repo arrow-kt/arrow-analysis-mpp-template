@@ -1,6 +1,6 @@
 plugins {
-  kotlin("multiplatform") version "1.6.21" apply true
-  id("io.kotest.multiplatform") version "5.3.0" apply true
+  kotlin("multiplatform") version "2.0.21" apply true
+  id("io.kotest.multiplatform") version "6.0.0-LOCAL" apply true
   id("io.arrow-kt.analysis.kotlin") version "2.0.2"
 }
 
